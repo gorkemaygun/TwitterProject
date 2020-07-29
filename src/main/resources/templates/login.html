@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Log in</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styling.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/index.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Welcome!</h2>
+    <form th:action="@{/login}" method="post"><br/>
+        <input type="text" id="username" name="username" th:placeholder="Username" class="form-control"/> <br/>
+        <input type="password" th:placeholder="Password" id="password" name="password" class="form-control"/> <br/>
+        <div align="center" th:if="${param.error}">
+            <h4 style="color: red">Login unsuccessful.</h4>
+        </div>
+        <button class="btn btn-md btn-success btn-block" name="Submit" value="Login" type="Submit">Log in</button>
+    </form>
+</div>
+</body>
+</html>

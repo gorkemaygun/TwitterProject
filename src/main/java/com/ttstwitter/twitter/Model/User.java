@@ -1,6 +1,7 @@
 package com.ttstwitter.twitter.Model;
 
 import java.util.Date;
+
 import java.util.List;
 import java.util.Set;
 
@@ -19,9 +20,6 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -68,10 +66,11 @@ public class User {
     private Set<Role> roles;
     
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_follower", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "follower_id"))
+    @JoinTable(name = "user_follower", joinColumns = @JoinColumn(name = "user_id"), 
+    inverseJoinColumns = @JoinColumn(name = "follower_id"))
     private List<User> followers;
     
     @ManyToMany(mappedBy="followers")
-	private List<User> following;
-
+    private List<User> following;
+      
 }
